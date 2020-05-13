@@ -76,4 +76,8 @@ router.get('/safehospital', function(req, res, next) {
   .catch((e) => console.log(e));
 });
 
+router.get('/test', function(req, res, next) {
+  res.send("내서버는 정상이야 공공데이터 시벌련들아");
+});
+
 module.exports = router;
