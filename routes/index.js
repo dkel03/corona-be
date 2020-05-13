@@ -12,7 +12,7 @@ const hospitalDataOptions = {
 
 const safehospitalDataOptions = {
   serviceKey:
-    "pWxaXap%2FwKbLIZRUF%2BU%2Ff6665dXH4T%2Bf%2BknFO1vInhK1WDpcL1CVgbthsPoVCAKKTWHuuFrx4oEDagFOMWMyAg%3D%3D",
+    "Gapi3Y3NgHbKpMII2BGJoNsOxMc72SavcfMTLTuXYs4im92WMHj38Z5OXbWh1kYfixFsUTkjFJBSD3fasCziwA%3D%3D",
   pageNo: 1,
   numOfRows: 1000,
   spclAdmTyCd: "A0",
