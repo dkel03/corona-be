@@ -10,6 +10,14 @@ const hospitalDataOptions = {
   spclAdmTyCd: "99",
 };
 
+const safehospitalDataOptions = {
+  serviceKey:
+    "pWxaXap%2FwKbLIZRUF%2BU%2Ff6665dXH4T%2Bf%2BknFO1vInhK1WDpcL1CVgbthsPoVCAKKTWHuuFrx4oEDagFOMWMyAg%3D%3D",
+  pageNo: 1,
+  numOfRows: 1000,
+  spclAdmTyCd: "A0",
+};
+
 const sortHospitals = (hospitals) => {  //시 또는 도 별 정렬
   if (!hospitals || !Array.isArray(hospitals)) {
     return;
@@ -33,6 +41,25 @@ const sortHospitals = (hospitals) => {  //시 또는 도 별 정렬
 router.get('/', function(req, res, next) {
   const hospitalDataUrl = `http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList?serviceKey=${hospitalDataOptions.serviceKey}&pageNo=${hospitalDataOptions.pageNo}&numOfRows=${hospitalDataOptions.numOfRows}&spclAdmTyCd=${hospitalDataOptions.spclAdmTyCd}&`;
   axios.get(hospitalDataUrl)
+  .then((response) => {
+    const {
+      data: {
+        response: {
+          body: {
+            items: { item },
+          },
+        },
+      },
+    } = response;
+    sortHospitals(item);
+    res.send(item);
+  })
+  .catch((e) => console.log(e));
+});
+
+router.get('/safehospital', function(req, res, next) {
+  const safehospitalDataUrl = `http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList?serviceKey=${safehospitalDataOptions.serviceKey}&pageNo=${safehospitalDataOptions.pageNo}&numOfRows=${safehospitalDataOptions.numOfRows}&spclAdmTyCd=${safehospitalDataOptions.spclAdmTyCd}&`;
+  axios.get(safehospitalDataUrl)
   .then((response) => {
     const {
       data: {
